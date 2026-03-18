@@ -1,0 +1,10 @@
+- name: Play name
+  hosts: target_hosts
+  become: true/false
+  vars:
+    variable_name: value
+  tasks:
+    - name: Task name
+      module_name:
+        option1: value
+        option2: value
