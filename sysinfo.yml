@@ -1,0 +1,19 @@
+---
+- name: System Info
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  tasks:
+    - name: Print OS
+      debug:
+        msg: "OS: {{ ansible_os_family }}"
+    - name: Print hostname
+      debug:
+        msg: "Hostname: {{ ansible_hostname }}"
+    - name: Create Dir
+      file:
+        path: /tmp/ansible_exercise
+        state: directory
+    - name: Print completion message
+      debug:
+        msg: "System info gathered and directory created"
