@@ -1,16 +1,21 @@
 ---
-- name: Simple Web Setup
-  hosts: local
-  become: true
+- name: Multi-Task Setup Playbook
+  hosts: localhost
+  connection: local
+  gather_facts: false
   tasks:
-    - name: Install nginx
-      package:
-        name: nginx
-        state: present
-    - name: Start nginx
-      service:
-        name: nginx
-        state: started
+    - name: Create myproject
+      file:
+        path: ./myproject
+        state: directory
+    - name: Create readme
+      copy:
+        dest: myproject/README.md
+        content: "# My Project\nManaged by Ansible"
+    - name: Create config.txt
+      copy:
+        dest: myproject/README.md
+        content: "version=1.0"
     - name: Print completion message
       debug:
-        msg: "Web server setup complete"
+        msg: "Project setup complete"
