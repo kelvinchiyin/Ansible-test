@@ -1,6 +1,6 @@
 ---
 - name: Multi-Task Setup Playbook
-  hosts: localhost
+  hosts: all
   connection: local
   gather_facts: false
   tasks:
