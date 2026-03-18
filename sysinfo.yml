@@ -14,6 +14,13 @@
       file:
         path: /tmp/ansible_exercise
         state: directory
+    - name: Show execution context
+      debug:
+        msg: |
+          Hostname: {{ ansible_hostname | default('N/A') }}
+          PWD: {{ lookup('pipe', 'pwd') }}
+          User: {{ ansible_user_id | default(lookup('pipe', 'whoami')) }}
+          Is Container: {{ lookup('pipe', 'cat /proc/1/cgroup 2>/dev/null | grep -q docker && echo YES || echo NO') }}
     - name: Print completion message
       debug:
         msg: "System info gathered and directory created"
