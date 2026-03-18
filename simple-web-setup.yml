@@ -6,7 +6,7 @@
   tasks:
     - name: Create myproject
       file:
-        path: myproject
+        path: ./myproject
         state: directory
     - name: Create readme
       copy:
