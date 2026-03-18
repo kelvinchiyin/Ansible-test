@@ -1,0 +1,16 @@
+---
+- name: Simple Web Setup
+  hosts: local
+  become: true
+  tasks:
+    - name: Install nginx
+      package:
+        name: nginx
+        state: present
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+    - name: Print completion message
+      debug:
+        msg: "Web server setup complete"
